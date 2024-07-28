@@ -16,8 +16,8 @@ This project provides a Dockerized solution for setting up multiple SSH tunnels 
 
 The configuration is defined in a YAML file (`config.yaml`). Each tunnel is specified with the following parameters:
 
-- `source_ssh_user`: SSH username for the source server.
-- `source_host`: Hostname or IP address of the source server.
+- `tunnel_user`: SSH username for the source server.
+- `tunnel_host`: Hostname or IP address of the source server.
 - `source_host_ssh_port`: SSH port of the source server.
 - `source_port`: The port on the source server to be forwarded.
 - `target_ssh_user`: SSH username for the target server.
