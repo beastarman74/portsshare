@@ -2,13 +2,17 @@
 
 ## Overview
 
-This project provides a Dockerized solution for setting up multiple SSH tunnels using AutoSSH. It's designed to forward ports from a source machine on a private network to a target machine, potentially on a different network. The setup is controlled through a simple configuration file and is executed within a Docker container for ease of use and portability.
+This project provides a Dockerized solution for setting up to 15 SSH local tunnels using AutoSSH.
+It is designed to forward ports (remote port) from a remote machine (tunnel host) on a remote network (eg a VPS) to a target local machine (machine running the docker container). 
+
+The setup is controlled through a simple configuration file and is executed within a Docker container for ease of use and portability.
 
 ## Prerequisites
 
 - Docker and Docker Compose installed on your system.
-- SSH access set up between the source and target servers. Run `ssh-copy-id` command from the portSSHare host to both source and target hosts.
 - SSH keys configured for passwordless login.
+
+- SSH access set up between the source and target servers. Run `ssh-copy-id` command from the portSSHare host to both source and target hosts.
 
 ## Configuration
 
@@ -16,14 +20,14 @@ This project provides a Dockerized solution for setting up multiple SSH tunnels 
 
 The configuration is defined in a YAML file (`config.yaml`). Each tunnel is specified with the following parameters:
 
-- `tunnel_user`: SSH username for the source server.
-- `tunnel_host`: Hostname or IP address of the source server.
-- `source_host_ssh_port`: SSH port of the source server.
-- `source_port`: The port on the source server to be forwarded.
-- `target_ssh_user`: SSH username for the target server.
-- `target_host`: Hostname or IP address of the target server.
-- `target_host_ssh_port`: SSH port of the target server.
-- `target_port`: The port on the target server where the source port will be forwarded to.
+- `tunnel_user`: The SSH username for the source server.
+- `tunnel_host`: Hostname or IP address of the docker host server.
+- `tunnel_port`: The SSH port of the docker host server.
+- `local_port`: The port on the docker host server to be forwarded to.
+- `remote_port`: The port on the tunnel host to be forwarded to the local port.
+
+- The SSH key used to authenticate again the remote tunnel hosts. The key should be able to be used to authenticate to all tunnel hosts specified in the config.yaml file.
+- The SSH key folder should be mapped into the docker container.
 
 ### Example Configuration
 
@@ -51,25 +55,19 @@ tunnel2_target_port: 9001
 
 1. **Prepare Configuration**: Copy the `config.yaml.example` file into a new file in the same location named `config.yaml` to define your SSH tunneling setup.
 
-2. **Build the Docker Container**:
-
-    ```bash
-    docker-compose build
-    ```
-
-3. **Run the Docker Container**:
+2. **Run the Docker Container**:
 
     ```bash
     docker-compose up -d
     ```
 
-4. **Check Tunnels**: Verify that the tunnels are established.
+3. **Check Tunnels**: Verify that the tunnels are established.
 
    ```bash
     docker-compose logs
     ```
 
-6. **Stopping the Container**:
+4. **Stopping the Container**:
 
     ```bash
     docker-compose down
