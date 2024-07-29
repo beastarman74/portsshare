@@ -11,8 +11,7 @@ The setup is controlled through a simple configuration file and is executed with
 
 - Docker and Docker Compose installed on your system.
 - SSH keys configured for passwordless login.
-
-- SSH access set up between the source and target servers. Run `ssh-copy-id` command from the portSSHare host to both source and target hosts.
+- 
 
 ## Configuration
 
