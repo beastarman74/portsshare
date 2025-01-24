@@ -1,11 +1,68 @@
-tunnel1_local_port: 10001
-tunnel1_tunnel_user: username
+## Server 1 - 123.123.123.123
+
+# Dozzle - Server 1
+tunnel1_local_port: 10002
+tunnel1_tunnel_user: ssh_username
 tunnel1_tunnel_host: 123.123.123.123
 tunnel1_tunnel_port: 22
-tunnel1_remote_port: 12345
-
-tunnel2_local_port: 10002
-tunnel2_tunnel_user: username
+tunnel1_remote_port: 9999
+# Filebrowser - Server 1
+tunnel2_local_port: 10003
+tunnel2_tunnel_user: ssh_username
 tunnel2_tunnel_host: 123.123.123.123
 tunnel2_tunnel_port: 22
-tunnel2_remote_port: 12345
+tunnel2_remote_port: 8086
+# dockge - Server 1
+tunnel3_tunnel_port: 22
+tunnel3_local_port: 10001
+tunnel3_tunnel_user: ssh_username
+tunnel3_tunnel_host: 123.123.123.123
+tunnel3_remote_port: 9998
+
+## Server 2 - 123.123.123.124
+
+# dockge - Server 2
+tunnel4_tunnel_port: 22
+tunnel4_local_port: 10004
+tunnel4_tunnel_user: ssh_username
+tunnel4_tunnel_host: 123.123.123.124
+tunnel4_remote_port: 9998
+# Dozzle - Server 2
+tunnel5_local_port: 10005
+tunnel5_tunnel_user: ssh_username
+tunnel5_tunnel_host: 123.123.123.124
+tunnel5_tunnel_port: 22
+tunnel5_remote_port: 9999
+# Filebrowser - Server 2
+tunnel6_local_port: 10006
+tunnel6_tunnel_user: ssh_username
+tunnel6_tunnel_host: 123.123.123.124
+tunnel6_tunnel_port: 22
+tunnel6_remote_port: 8086
+
+## Server 3 - 123.123.123.125
+
+# Portainer - Server 3
+tunnel7_tunnel_port: 22
+tunnel7_local_port: 10007
+tunnel7_tunnel_user: ssh_username
+tunnel7_tunnel_host: 123.123.123.125
+tunnel7_remote_port: 9443
+# Excalidraw - Server 3
+tunnel8_local_port: 10008
+tunnel8_tunnel_user: ssh_username
+tunnel8_tunnel_host: 123.123.123.125
+tunnel8_tunnel_port: 22
+tunnel8_remote_port: 9980
+# Bytestash - Server 3
+tunnel9_local_port: 10009
+tunnel9_tunnel_user: ssh_username
+tunnel9_tunnel_host: 123.123.123.125
+tunnel9_tunnel_port: 22
+tunnel9_remote_port: 5000
+# Sterling-PDF - Server 3
+tunnel9_local_port: 10010
+tunnel9_tunnel_user: ssh_username
+tunnel9_tunnel_host: 123.123.123.125
+tunnel9_tunnel_port: 22
+tunnel9_remote_port: 8080
