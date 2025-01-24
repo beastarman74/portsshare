@@ -41,7 +41,7 @@ services:
       - portsshare
     ports:
       # set the number of ports required. Keeping the number to a minimum can help container performance and prevent impact to docker apps like Portainer
-	  - 10001-10015:10001-10015 
+      - 10001-10015:10001-10015 
    
 networks:
   portsshare:
