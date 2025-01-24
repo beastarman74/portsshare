@@ -1,25 +1,26 @@
 services:
   portsshare:
-    container_name: portsshare
-    build: .
+    container_name: portsshare-tunnels
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
-      - SSHKEY=$SSHKEY
+      # Create a .env file to contain the SSH key name value.
+      - SSHKEY=portsshare-id_ed25519
     stdin_open: true # docker run -i
     tty: true # docker run -t
       #
     volumes:
       # Bind the config file so it can be edited without rebuilding the image
       - ~/config.yaml:/config.yaml
-      # Bind the host's SSH keys so container appears as an authorized key
+      # Bind an SSH key that is authorised to connect to the desired target machines
       - ./keys:/root/.ssh
-    restart: always
+    restart: unless-stopped
     networks: 
       - portsshare
     ports:
-	  - 10001-10015:10001-10015
+      # set the number of ports required. Keeping the number to a minimum can help container performance and prevent impact to docker apps like Portainer
+      - 10001-10015:10001-10015 
    
 networks:
   portsshare:
